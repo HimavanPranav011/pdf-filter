@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Security
 from fastapi.responses import StreamingResponse
 from fastapi.security import APIKeyHeader
-from .PdfFilter import (
+from PdfFilter import (
     get_pdf_file_content,
     extract_odd_pages,
     extract_pages_into_individual_pdf_files,
@@ -22,7 +22,6 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 app = FastAPI()
 API_KEY = os.environ.get("API_KEY")
-print(API_KEY)
 API_KEY_NAME = "X-API-Key"
 
 api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=False)
